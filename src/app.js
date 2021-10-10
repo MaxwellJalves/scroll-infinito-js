@@ -11,7 +11,22 @@ const obterPosts = async () => {
 
 const adicionarPosts = async () => {
   const posts = await obterPosts();
+  const modeloDePosts = posts.map(
+    (item) => `
+  <div class="post"> 
+    <div class="number">${item.id} </div>
+    <div class="post-info">
+        <h2 class="post-title">${item.title}</h2>
+        <p class="post-body">${item.body}</p>
+    </div>
+    <div class="codigo"> </div>  
+  </div>
+  `
+  );
   console.log(posts);
+  console.log(modeloDePosts);
+
+  return (document.getElementById("posts-container").innerHTML = modeloDePosts);
 };
 
 adicionarPosts();

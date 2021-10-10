@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #000000da;
+  background-color: #0E1220;
   color: #B7BABE;
   font-family: 'Roboto', sans-serif;
   display: flex;
@@ -20,7 +20,7 @@ body {
 h1 {
   margin-bottom: 0;
   text-align: center;
-  color: #eba000;
+  color: #f79503;
 }
 
 .filter-container {
@@ -70,12 +70,21 @@ h1 {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background: #4CD964;
+  background: #f79503;
   color: #0E1220;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 7px 10px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.post .number:hover{
+  background:rgba(124, 253, 3, 0.3)
+
 }
 
 .loader {
@@ -91,7 +100,7 @@ h1 {
 }
 
 .circle {
-  background-color: #4CD964;
+  background-color: #f79503;
   width: 10px;
   height: 10px;
   border-radius: 50%;
