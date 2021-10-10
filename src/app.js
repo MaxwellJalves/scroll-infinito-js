@@ -1,5 +1,6 @@
 let quantidade = 5;
 const pagina_atual = 1;
+const containerPost = document.querySelector('#posts-container')
 
 //aguarda essa função realizar a atividade solicitada e  enquanto ela não chegar continue aguardando  , até receber a promessa resolvida
 const obterPosts = async () => {
@@ -11,22 +12,18 @@ const obterPosts = async () => {
 
 const adicionarPosts = async () => {
   const posts = await obterPosts();
-  const modeloDePosts = posts.map(
-    (item) => `
+  const modeloDePosts = posts.map(({id, title , body}) => `
   <div class="post"> 
-    <div class="number">${item.id} </div>
+    <div class="number">${id} </div>
     <div class="post-info">
-        <h2 class="post-title">${item.title}</h2>
-        <p class="post-body">${item.body}</p>
+        <h2 class="post-title">${title}</h2>
+        <p class="post-body">${body}</p>
     </div>
     <div class="codigo"> </div>  
   </div>
   `
-  );
-  console.log(posts);
-  console.log(modeloDePosts);
-
-  return (document.getElementById("posts-container").innerHTML = modeloDePosts);
+  ).join('________________________________________________________________________________________________________________');
+  return (containerPost.innerHTML += modeloDePosts);
 };
 
 adicionarPosts();
