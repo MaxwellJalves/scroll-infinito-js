@@ -1,6 +1,17 @@
-const quantidade_de_post = 5
-const pagina_atual = 1
+let quantidade = 5;
+const pagina_atual = 1;
 
-const endpoint = `https://jsonplaceholder.typicode.com/posts?_limit=${quantidade_de_post}?&_page=${pagina_atual}`
+//aguarda essa função realizar a atividade solicitada e  enquanto ela não chegar continue aguardando  , até receber a promessa resolvida
+const obterPosts = async () => {
+  const resposta = await fetch(
+    `https://jsonplaceholder.typicode.com/posts?_limit=${quantidade}?&_page=${pagina_atual}`
+  );
+  return resposta.json();
+};
 
-console.log(endpoint)
+const adicionarPosts = async () => {
+  const posts = await obterPosts();
+  console.log(posts);
+};
+
+adicionarPosts();
