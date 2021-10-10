@@ -120,9 +120,15 @@ h1 {
   0%,
   100% {
     transform: translateY(0);
+
   }
 
   50% {
     transform: translateY(-10px);
+    background-color: green;
+  }
+  25% {
+    transform: translateY(-10px);
+    background-color: rgb(0, 30, 128);
   }
 }
