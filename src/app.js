@@ -1,14 +1,15 @@
-let quantidade = 5;
-let pagina_atual = 1;
+
+let paginacao = 1;
 const containerPost = document.querySelector("#posts-container");
 const containerLoad = document.querySelector(".loader");
+const filtroInput = document.querySelector("#filter")
 
 
 
 //aguarda essa função realizar a atividade solicitada e  enquanto ela não chegar continue aguardando  , até receber a promessa resolvida
 const obterPosts = async () => {
   const resposta = await fetch(
-    `https://jsonplaceholder.typicode.com/posts?_limit=${quantidade}?&_page=${pagina_atual}`
+    `https://jsonplaceholder.typicode.com/posts?_limit=5?&_page=${paginacao}`
   );
   return resposta.json();
 };
@@ -29,7 +30,7 @@ const adicionarPosts = async () => {
   `
     )
     .join(
-      "________________________________________________________________________________________________________________"
+     ''
     );
   return (containerPost.innerHTML += modeloDePosts);
 };
@@ -37,7 +38,7 @@ const adicionarPosts = async () => {
 adicionarPosts();
 
 const pegarProximoPost = () => {
-    pagina_atual++;
+    paginacao++;
     adicionarPosts()
 };
 
@@ -61,3 +62,24 @@ window.addEventListener("scroll", () => {
     exibaOLoad();
   }
 });
+
+
+filtroInput.addEventListener('input', event =>{
+
+    const input = event.target.value.toUpperCase()
+    const posts = document.querySelectorAll('.post')
+
+
+    posts.forEach( (post , index) =>{
+       const tituloDoPost = post.querySelector('.post-title').textContent.toUpperCase()
+       const descricaoDoPost = post.querySelector('.post-body').textContent.toUpperCase()
+
+       if(tituloDoPost.includes(input) || descricaoDoPost.includes(input)){
+        post.style.display = 'flex'
+        return
+       }
+
+       post.style.display = 'none'
+    })
+
+})
